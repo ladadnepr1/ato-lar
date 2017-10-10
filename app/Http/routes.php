@@ -38,7 +38,23 @@ Route::delete('/task/{task}', function (Task $task) {
     $task->delete();
     return redirect('/');
 });
-Route::edit('/task/{task}', function (Task $task) {
-    $task->edit();
+Route::post('/task/edit/{task}', function (Task $task) {
+    $_POST('id_edit')=$task->id;
+    return redirect('/');
+});
+Route::post('/task/save/{task}', function (Request $request,Task $task) {
+    $validator = Validator::make($request->all(), [
+                'name' => 'required|max:255',
+    ]);
+
+    if ($validator->fails()) {
+        return redirect('/')
+                        ->withInput()
+                        ->withErrors($validator);
+    }
+    
+    $task->name = $request->name;
+    $task->save();
+
     return redirect('/');
 });
