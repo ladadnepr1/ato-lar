@@ -41,13 +41,13 @@
             <th>edit</th>
             </thead>
 
-            <!-- Тело таблицы -->
+<!-- Тело таблицы -->
             <tbody>
                 @foreach ($tasks as $task)
                 @if ({{ $id_edit }}!=={{$task->id}})
                 <tr>
 
-                    <!-- Имя задачи -->
+ <!-- Имя задачи -->
                     <td class="table-text">
                         <div>{{ $task->name }}</div>
                     </td>
@@ -65,7 +65,6 @@
                     <td>
                         <form action="{{ url('task/edit/'.$task->id) }}" method="POST">
                             {{ csrf_field() }}
-                            {{  }}
 
                             <button type="submit" class="btn btn-warning">
                                 <i class="fa fa-cog"></i> Редактировать
@@ -75,7 +74,7 @@
                 </tr>
                 @else
                 <tr>
-                    <!-- Изменение задачи -->
+ <!-- Изменение задачи -->
             <form action="{{ url('task/save/').$task->id) }}" method="POST" class="form-horizontal">
                 {{ csrf_field() }}
                 <td class="table-text">
