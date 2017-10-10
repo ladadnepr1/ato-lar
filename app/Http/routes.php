@@ -39,8 +39,7 @@ Route::delete('/task/{task}', function (Task $task) {
     return redirect('/');
 });
 Route::post('/task/edit/{task}', function (Task $task) {
-    $_POST('id_edit')=$task->id;
-    return redirect('/');
+    return view('tasks',['id_edit'=>$task->id]);
 });
 Route::post('/task/save/{task}', function (Request $request,Task $task) {
     $validator = Validator::make($request->all(), [

@@ -44,7 +44,7 @@
             <!-- Тело таблицы -->
             <tbody>
                 @foreach ($tasks as $task)
-                @if (empty($_POST('id_edit')))
+                @if ({{ $id_edit }}!=={{$task->id}})
                 <tr>
 
                     <!-- Имя задачи -->
